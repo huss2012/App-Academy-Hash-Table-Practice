@@ -75,6 +75,16 @@ class HashTable {
 
   insertWithHashCollisions(key, value) {
     // Your code here
+    //1.Create the keyValuePair:
+    let keyValuePair = new KeyValuePair(key, value);
+    //2.Create the index => where to put the keyvaluepair:
+    let index = this.hashMod(key);
+    //3.Check if the index is not null => means ecupied
+    if (this.data[index] !== null) {//means there is keyvaluepair
+      keyValuePair.next = this.data[index];
+    }
+    this.data[index] = keyValuePair;
+    this.count++;
   }
 
   insert(key, value) {
