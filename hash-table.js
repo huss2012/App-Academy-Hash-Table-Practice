@@ -55,6 +55,7 @@ class HashTable {
 
   hashMod(key) {
     // Your code here
+    return this.hash(key) % this.capacity;
   }
 
   insertNoCollisions(key, value) {
