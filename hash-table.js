@@ -89,6 +89,26 @@ class HashTable {
 
   insert(key, value) {
     // Your code here
+    const keyValue = new KeyValuePair(key, value);
+    const index = this.hashMod(key);
+
+    if (this.data[index]) {
+      let currBucket = this.data[index];
+
+      while (currBucket) {
+        if (currBucket.key === key) {
+          currBucket.value = value;
+          return;
+        }
+
+        currBucket = currBucket.next;
+      }
+
+      keyValue.next = this.data[index];
+    }
+
+    this.data[index] = keyValue;
+    this.count++;
   }
 
 }
